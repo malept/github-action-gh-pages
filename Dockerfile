@@ -6,5 +6,7 @@ LABEL "com.github.actions.color"="gray-dark"
 LABEL "repository"="https://github.com/malept/github-action-gh-pages"
 LABEL "maintainer"="Mark Lee <https://github.com/malept>"
 
+RUN apt-get install -y git && apt clean
+
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
