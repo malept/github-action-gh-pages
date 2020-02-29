@@ -54,7 +54,7 @@ if ! git branch --list --remote | grep --quiet origin/$PUBLISH_BRANCH; then
 else
     git checkout $PUBLISH_BRANCH
     if test "$DOC_TARGET_DIR" != "." -a -d "$DOC_TARGET_DIR"; then
-        rm -r "$DOC_TARGET_DIR"
+        git rm -r "$DOC_TARGET_DIR"
     fi
 fi
 
