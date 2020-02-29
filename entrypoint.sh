@@ -58,7 +58,7 @@ else
     fi
 fi
 
-if test "$DOC_TARGET_DIR" == "."; then
+if test "$DOC_TARGET_DIR" = "."; then
     mv "$DOCS_PATH"/* .
     rm -r "$DOCS_PATH"/
 else
