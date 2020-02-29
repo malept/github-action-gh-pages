@@ -30,7 +30,7 @@ This action uses one of two methods to push the commit back up to the repository
 ```yaml
 name: Publish Documentation
 
-on: [create]
+on: push
 
 jobs:
   docs:
