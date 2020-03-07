@@ -49,7 +49,7 @@ if test -n "$GH_PAGES_DEBUG"; then
     git branch --list --remote
 fi
 
-if ! git branch --list --remote | grep --quiet origin/$PUBLISH_BRANCH; then
+if ! git branch --list --remote | grep --quiet "origin/${PUBLISH_BRANCH}$"; then
     git checkout --orphan $PUBLISH_BRANCH
     git rm --cached .gitignore
     git rm --force -r .
