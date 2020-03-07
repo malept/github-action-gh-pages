@@ -42,13 +42,6 @@ else
     DOC_TARGET_DIR=.
 fi
 
-if test -n "$GH_PAGES_DEBUG"; then
-    echo git branches
-    git branch --list
-    echo git remote branches
-    git branch --list --remote
-fi
-
 if ! git branch --list --remote | grep --quiet "origin/${PUBLISH_BRANCH}$"; then
     git checkout --orphan $PUBLISH_BRANCH
     git rm --cached .gitignore
