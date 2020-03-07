@@ -61,7 +61,7 @@ if test "$DOC_TARGET_DIR" = "."; then
     mv "$DOCS_PATH"/* .
     rm -r "$DOCS_PATH"/
 else
-    if test -n "$INPUT_VERSIONDOCS"; then
+    if test -n "$INPUT_VERSIONDOCS" -a "$DOC_TARGET_DIR" = "master"; then
         echo "<html><head><meta http-equiv='refresh' content='0; url=$DOC_TARGET_DIR/'></head></html>" > index.html
     fi
     mv "$DOCS_PATH" "$DOC_TARGET_DIR"
