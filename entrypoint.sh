@@ -43,6 +43,9 @@ else
 fi
 
 if test -n "$GH_PAGES_DEBUG"; then
+    echo git branches
+    git branch --list
+    echo git remote branches
     git branch --list --remote
 fi
 
