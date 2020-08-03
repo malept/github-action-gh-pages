@@ -4,11 +4,13 @@ A simple GitHub Action to deploy already generated static pages to GitHub Pages.
 
 ## Inputs
 
+* `defaultBranch` - The default branch name for the repository, defaults to `master` for
+  backwards-compatiblity reasons. _Version 2.x will likely default to `main`_.
 * `docsPath` - The folder where the generated docs are located, defaults to `docs`.
-* `gitCommitEmail`: The email to use when committing to the repository, defaults to the repository
+* `gitCommitEmail` - The email to use when committing to the repository, defaults to the repository
   owner's fake GitHub email.
-* `gitCommitFlags`: Any extra `git commit` flags to pass, such as `--no-verify`.
-* `gitCommitUser`: The value to set `git config user.name`, defaults to the repository owner.
+* `gitCommitFlags` - Any extra `git commit` flags to pass, such as `--no-verify`.
+* `gitCommitUser` - The value to set `git config user.name`, defaults to the repository owner.
 * `publishBranch` - The branch name that GitHub Pages uses to build the website, defaults
   to `gh-pages`.
 * `showUnderscoreFiles` - If set, adds a `.nojekyll` file to the root so files that start with
@@ -41,14 +43,14 @@ jobs:
     - name: Build docs
     - run: make docs
     - name: Publish docs
-      uses: malept/github-action-gh-pages@master
+      uses: malept/github-action-gh-pages@main
       with:
         gitCommitUser: Docs Publisher Bot
       env:
         DOCS_SSH_DEPLOY_KEY: ${{ secrets.DOCS_SSH_DEPLOY_KEY }}
 ```
 
-In a production setting, `master` should be a tagged version (e.g., `v1.0.0`).
+In a production setting, `main` should be a tagged version (e.g., `v1.0.0`).
 
 ## Debugging
 
