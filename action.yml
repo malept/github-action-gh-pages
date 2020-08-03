@@ -24,6 +24,9 @@ inputs:
   publishBranch:
     description: 'The branch name that GitHub Pages uses to build the website, defaults to `gh-pages`.'
     required: false
+  redirectURLSuffix:
+    description: 'The path suffix for the redirect URL used in `index.html`, when `versionDocs` is `true`.'
+    required: false
   showUnderscoreFiles:
     description: 'If set, adds a `.nojekyll` file to the root so files that start with `_` are accessible.'
     required: false

@@ -68,7 +68,8 @@ if test "$DOC_TARGET_DIR" = "."; then
     rm -r "$DOCS_PATH"/
 else
     if test -n "$INPUT_VERSIONDOCS" -a "$DOC_TARGET_DIR" = "$DEFAULT_BRANCH"; then
-        echo "<html><head><meta http-equiv='refresh' content='0; url=$DOC_TARGET_DIR/'></head></html>" > index.html
+        REDIRECT_URL="$DOC_TARGET_DIR/$INPUT_REDIRECTURLSUFFIX"
+        echo "<html><head><meta http-equiv='refresh' content='0; url=$REDIRECT_URL'></head></html>" > index.html
     fi
     mv "$DOCS_PATH" "$DOC_TARGET_DIR"
 fi
