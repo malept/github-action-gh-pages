@@ -41,14 +41,14 @@ jobs:
     - name: Build docs
     - run: make docs
     - name: Publish docs
-      uses: malept/github-action-gh-pages@master
+      uses: malept/github-action-gh-pages@main
       with:
         gitCommitUser: Docs Publisher Bot
       env:
         DOCS_SSH_DEPLOY_KEY: ${{ secrets.DOCS_SSH_DEPLOY_KEY }}
 ```
 
-In a production setting, `master` should be a tagged version (e.g., `v1.0.0`).
+In a production setting, `main` should be a tagged version (e.g., `v1.0.0`).
 
 ## Debugging
 

@@ -37,7 +37,7 @@ fi
 if test -n "$GIT_REVISION"; then
     DOC_TARGET_DIR="$GIT_REVISION"
 elif test -n "$INPUT_VERSIONDOCS"; then
-    DOC_TARGET_DIR=master
+    DOC_TARGET_DIR=main
 else
     DOC_TARGET_DIR=.
 fi
@@ -61,7 +61,7 @@ if test "$DOC_TARGET_DIR" = "."; then
     mv "$DOCS_PATH"/* .
     rm -r "$DOCS_PATH"/
 else
-    if test -n "$INPUT_VERSIONDOCS" -a "$DOC_TARGET_DIR" = "master"; then
+    if test -n "$INPUT_VERSIONDOCS" -a "$DOC_TARGET_DIR" = "main"; then
         echo "<html><head><meta http-equiv='refresh' content='0; url=$DOC_TARGET_DIR/'></head></html>" > index.html
     fi
     mv "$DOCS_PATH" "$DOC_TARGET_DIR"
