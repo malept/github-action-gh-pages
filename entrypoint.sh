@@ -20,6 +20,12 @@ if test -z "$INPUT_GITCOMMITUSER"; then
     INPUT_GITCOMMITUSER="$GITHUB_ACTOR"
 fi
 
+if test -n "$INPUT_DEFAULTBRANCH"; then
+  DEFAULT_BRANCH="$INPUT_DEFAULTBRANCH"
+else
+  DEFAULT_BRANCH=master
+fi
+
 if test -n "$INPUT_PUBLISHBRANCH"; then
     PUBLISH_BRANCH="$INPUT_PUBLISHBRANCH"
 else
@@ -37,7 +43,7 @@ fi
 if test -n "$GIT_REVISION"; then
     DOC_TARGET_DIR="$GIT_REVISION"
 elif test -n "$INPUT_VERSIONDOCS"; then
-    DOC_TARGET_DIR=main
+    DOC_TARGET_DIR="$DEFAULT_BRANCH"
 else
     DOC_TARGET_DIR=.
 fi
@@ -61,7 +67,7 @@ if test "$DOC_TARGET_DIR" = "."; then
     mv "$DOCS_PATH"/* .
     rm -r "$DOCS_PATH"/
 else
-    if test -n "$INPUT_VERSIONDOCS" -a "$DOC_TARGET_DIR" = "main"; then
+    if test -n "$INPUT_VERSIONDOCS" -a "$DOC_TARGET_DIR" = "$DEFAULT_BRANCH"; then
         echo "<html><head><meta http-equiv='refresh' content='0; url=$DOC_TARGET_DIR/'></head></html>" > index.html
     fi
     mv "$DOCS_PATH" "$DOC_TARGET_DIR"

@@ -4,6 +4,9 @@ branding:
   icon: book
   color: gray-dark
 inputs:
+  defaultBranch:
+    description: 'The default branch name for the repository, defaults to `master` for backwards-compatiblity reasons. Version 2.x will likely default to `main`.'
+    required: false
   docsPath:
     description: 'The folder where the generated docs are located, defaults to `docs`.'
     required: false
