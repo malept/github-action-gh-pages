@@ -13,6 +13,8 @@ A simple GitHub Action to deploy already generated static pages to GitHub Pages.
 * `gitCommitUser` - The value to set `git config user.name`, defaults to the repository owner.
 * `publishBranch` - The branch name that GitHub Pages uses to build the website, defaults
   to `gh-pages`.
+* `redirectURLSuffix` - The path suffix for the redirect URL used in `index.html`, when
+  `versionDocs` is `true`.
 * `showUnderscoreFiles` - If set, adds a `.nojekyll` file to the root so files that start with
   `_` are accessible.
 * `versionDocs`- If set, put docs for all branches and tags in their own subfolders, defaults
