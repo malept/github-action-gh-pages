@@ -10,6 +10,8 @@ A simple GitHub Action to deploy already generated static pages to GitHub Pages.
 * `gitCommitEmail` - The email to use when committing to the repository, defaults to the repository
   owner's fake GitHub email.
 * `gitCommitFlags` - Any extra `git commit` flags to pass, such as `--no-verify`.
+* `gitCommitMessage` - The commit message to use when creating/updating the GitHub Pages branch.
+  Defaults to `Publish`.
 * `gitCommitUser` - The value to set `git config user.name`, defaults to the repository owner.
 * `publishBranch` - The branch name that GitHub Pages uses to build the website, defaults
   to `gh-pages`.
