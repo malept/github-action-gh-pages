@@ -18,6 +18,10 @@ inputs:
     description: 'Any extra `git commit` flags to pass, such as `--no-verify`.'
     default: ''
     required: false
+  gitCommitMessage:
+    description: 'The commit message to use when creating/updating the GitHub Pages branch.'
+    default: 'Publish'
+    required: false
   gitCommitUser:
     description: 'The value to set `git config user.name`, defaults to the repository owner.'
     required: false

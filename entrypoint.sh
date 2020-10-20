@@ -16,6 +16,10 @@ if test -z "$INPUT_GITCOMMITEMAIL"; then
     INPUT_GITCOMMITEMAIL="$GITHUB_ACTOR@users.noreply.github.com"
 fi
 
+if test -z "$INPUT_GITCOMMITMESSAGE"; then
+    INPUT_GITCOMMITMESSAGE="Publish"
+fi
+
 if test -z "$INPUT_GITCOMMITUSER"; then
     INPUT_GITCOMMITUSER="$GITHUB_ACTOR"
 fi
@@ -79,7 +83,7 @@ git add .
 if test -n "$(git status -s)"; then
     git config user.name "$INPUT_GITCOMMITUSER"
     git config user.email "$INPUT_GITCOMMITEMAIL"
-    git commit $INPUT_GITCOMMITFLAGS -m "Publish"
+    git commit $INPUT_GITCOMMITFLAGS --message "$INPUT_GITCOMMITMESSAGE"
 
     if test -n "$GH_PAGES_SSH_DEPLOY_KEY"; then
         mkdir ~/.ssh
