@@ -53,6 +53,7 @@ else
 fi
 
 if ! git branch --list --remote | grep --quiet "origin/${PUBLISH_BRANCH}$"; then
+    echo "Creating new $PUBLISH_BRANCH...."
     git checkout --orphan $PUBLISH_BRANCH
     git rm --cached .gitignore
     git rm --force -r .
@@ -61,6 +62,7 @@ if ! git branch --list --remote | grep --quiet "origin/${PUBLISH_BRANCH}$"; then
         touch .nojekyll
     fi
 else
+    echo "Switching to exisiting $PUBLISH_BRANCH..."
     git checkout $PUBLISH_BRANCH
     if test "$DOC_TARGET_DIR" != "." -a -d "$DOC_TARGET_DIR"; then
         git rm -r "$DOC_TARGET_DIR"
