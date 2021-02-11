@@ -70,7 +70,7 @@ else
 fi
 
 if test "$DOC_TARGET_DIR" = "."; then
-    mv "$DOCS_PATH"/* .
+    rsync --archive "$DOCS_PATH"/ ./
     rm -r "$DOCS_PATH"/
 else
     if test -n "$INPUT_VERSIONDOCS" -a "$DOC_TARGET_DIR" = "$DEFAULT_BRANCH"; then
