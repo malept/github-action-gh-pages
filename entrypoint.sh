@@ -52,6 +52,9 @@ else
     DOC_TARGET_DIR=.
 fi
 
+# Work around the "fatal: detected dubious ownership" issue
+git config --global --add safe.directory '*'
+
 if ! git branch --list --remote | grep --quiet "origin/${PUBLISH_BRANCH}$"; then
     echo "Creating new $PUBLISH_BRANCH...."
     git checkout --orphan $PUBLISH_BRANCH
