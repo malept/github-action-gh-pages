@@ -53,6 +53,7 @@ else
 fi
 
 # Work around the "fatal: detected dubious ownership" issue
+# See https://github.com/actions/runner-images/issues/6775#issuecomment-1410270956
 git config --global --add safe.directory '*'
 
 if ! git branch --list --remote | grep --quiet "origin/${PUBLISH_BRANCH}$"; then
