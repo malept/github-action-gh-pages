@@ -13,6 +13,7 @@ A simple GitHub Action to deploy already generated static pages to GitHub Pages.
 * `gitCommitMessage` - The commit message to use when creating/updating the GitHub Pages branch.
   Defaults to `Publish`.
 * `gitCommitUser` - The value to set `git config user.name`, defaults to the repository owner.
+* `noCommit` - If set, stage changes but do not commit them, defaults to `false`.
 * `publishBranch` - The branch name that GitHub Pages uses to build the website, defaults
   to `gh-pages`.
 * `redirectURLSuffix` - The path suffix for the redirect URL used in `index.html`, when
