@@ -4,6 +4,9 @@ branding:
   icon: book
   color: gray-dark
 inputs:
+  cname:
+    description: 'If set, create a `CNAME` file with the provided value.'
+    required: false
   defaultBranch:
     description: 'The default branch name for the repository, defaults to `master` for backwards-compatiblity reasons. Version 2.x will likely default to `main`.'
     required: false
