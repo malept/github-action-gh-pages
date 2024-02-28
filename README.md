@@ -4,6 +4,7 @@ A simple GitHub Action to deploy already generated static pages to GitHub Pages.
 
 ## Inputs
 
+* `cname`- If set, create a `CNAME` file with the provided value.
 * `defaultBranch` - The default branch name for the repository, defaults to `master` for
   backwards-compatiblity reasons. _Version 2.x will likely default to `main`_.
 * `docsPath` - The folder where the generated docs are located, defaults to `docs`.

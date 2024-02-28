@@ -73,6 +73,10 @@ else
     fi
 fi
 
+if test -n "$INPUT_CNAME"; then
+    echo "$INPUT_CNAME" > CNAME
+fi
+
 if test "$DOC_TARGET_DIR" = "."; then
     rsync --archive "$DOCS_PATH"/ ./
     rm -r "$DOCS_PATH"/
