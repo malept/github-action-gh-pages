@@ -86,7 +86,9 @@ fi
 
 git add .
 
-if test -z "$INPUT_NOCOMMIT"; then
+if test -n "$INPUT_NOCOMMIT"; then
+    echo "Skipping commit since noCommit input was set"
+else
     if test -n "$(git status -s)"; then
         git config user.name "$INPUT_GITCOMMITUSER"
         git config user.email "$INPUT_GITCOMMITEMAIL"
@@ -108,6 +110,4 @@ if test -z "$INPUT_NOCOMMIT"; then
     else
         echo "Skipping commit since no changes to commit"
     fi
-else
-    echo "Skipping commit since noCommit input was set"
 fi
