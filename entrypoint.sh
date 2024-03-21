@@ -90,22 +90,28 @@ fi
 
 git add .
 
-if test -n "$(git status -s)"; then
-    git config user.name "$INPUT_GITCOMMITUSER"
-    git config user.email "$INPUT_GITCOMMITEMAIL"
-    git commit $INPUT_GITCOMMITFLAGS --message "$INPUT_GITCOMMITMESSAGE"
+if test -n "$INPUT_NOCOMMIT"; then
+    echo "Skipping commit since noCommit input was set"
+else
+    if test -n "$(git status -s)"; then
+        git config user.name "$INPUT_GITCOMMITUSER"
+        git config user.email "$INPUT_GITCOMMITEMAIL"
+        git commit $INPUT_GITCOMMITFLAGS --message "$INPUT_GITCOMMITMESSAGE"
 
-    if test -n "$GH_PAGES_SSH_DEPLOY_KEY"; then
-        mkdir ~/.ssh
-        echo "$GH_PAGES_SSH_DEPLOY_KEY" > ~/.ssh/deploy_key
-        chmod 400 ~/.ssh/deploy_key
+        if test -n "$GH_PAGES_SSH_DEPLOY_KEY"; then
+            mkdir ~/.ssh
+            echo "$GH_PAGES_SSH_DEPLOY_KEY" > ~/.ssh/deploy_key
+            chmod 400 ~/.ssh/deploy_key
 
-        git remote rm origin
-        git remote add origin "git@github.com:$GITHUB_REPOSITORY.git"
+            git remote rm origin
+            git remote add origin "git@github.com:$GITHUB_REPOSITORY.git"
+        else
+            echo "machine github.com login $GITHUB_ACTOR password $GITHUB_TOKEN" > ~/.netrc
+            chmod 600 ~/.netrc
+        fi
+
+        GIT_SSH_COMMAND="ssh -i ~/.ssh/deploy_key" git push origin HEAD:$PUBLISH_BRANCH
     else
-        echo "machine github.com login $GITHUB_ACTOR password $GITHUB_TOKEN" > ~/.netrc
-        chmod 600 ~/.netrc
+        echo "Skipping commit since no changes to commit"
     fi
-
-    GIT_SSH_COMMAND="ssh -i ~/.ssh/deploy_key" git push origin HEAD:$PUBLISH_BRANCH
 fi

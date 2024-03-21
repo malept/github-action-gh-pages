@@ -28,6 +28,9 @@ inputs:
   gitCommitUser:
     description: 'The value to set `git config user.name`, defaults to the repository owner.'
     required: false
+  noCommit:
+    description: 'If set, stage changes but do not commit them, defaults to `false`.'
+    required: false
   publishBranch:
     description: 'The branch name that GitHub Pages uses to build the website, defaults to `gh-pages`.'
     required: false
