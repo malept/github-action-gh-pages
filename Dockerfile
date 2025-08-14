@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:trixie
 LABEL "com.github.actions.name"="GitHub Pages Deployment"
 LABEL "com.github.actions.description"="Deploys static pages to GitHub Pages"
 LABEL "com.github.actions.icon"="book-open"
